@@ -4,5 +4,5 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface CommandAction {
-    void requestPro(HttpServletRequest request, HttpServletResponse response);
+    String requestPro(HttpServletRequest request, HttpServletResponse response);
 }

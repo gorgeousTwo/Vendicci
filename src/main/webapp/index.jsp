@@ -34,7 +34,7 @@
 
 <%=result%>
 
-<script type="text/javascript" src="webjars/jquery/3.5.1/d  ist/jquery.js"></script>
+<script type="text/javascript" src="webjars/jquery/3.5.1/dist/jquery.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/4.6.0/js/bootstrap.js"></script>
 <script type="text/javascript"></script>
 

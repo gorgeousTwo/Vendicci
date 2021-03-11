@@ -8,18 +8,31 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-@WebServlet(name = "", value = "/")
+@WebServlet(
+        urlPatterns = {
+                "/Controller",
+                "*.do"
+        },
+
+        initParams = {
+                @WebInitParam(name = "propertyConfig", value = "com.proper.mapping")
+        }
+)
 public class Controller extends HttpServlet {
     private final long serialVersionUID = 1L;
     private HashMap<String, Object> commandMap = new HashMap<String, Object>();
 
+    public Controller() {
+        super();
+    }
+
     public void loadProperties(ServletConfig config) throws ServletException {
-        initProperties("/proper/mapping.properties");
+        initProperties("com/proper/mapping");
     }
 
     /**
      *
-     * @param path "/proper/mapping.properties"
+     * @param path "com/proper/mapping"
      *
      * mapping.properties => rs. properties Keys => bundleKeys.
      *
@@ -72,6 +85,28 @@ public class Controller extends HttpServlet {
      */
 
     public void requestPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String view = null;
+        CommandAction com = null;
 
+        try {
+            String command = request.getRequestURI();
+
+            if (command.indexOf(request.getContextPath()) == 0) {
+                command = command.substring(request.getContextPath().length());
+            }
+            com = (CommandAction) commandMap.get(command);
+            view = com.requestPro(request,response);
+
+        }catch (Throwable e) {
+            e.printStackTrace();
+        }finally {
+            if (view == null || view.equals("")) {
+                return;
+            }
+        }
+
+        request.setAttribute("conf",view);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+        dispatcher.forward(request,response);
     }
 }
