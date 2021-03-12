@@ -1,13 +1,13 @@
 package com.model;
 
 public class memberT {
-    private String id;
-    private String pwd;
-    private String phone;
-    private String email;
-    private String bio;
-    private String country;
-    private String address;
+    private String id; //* REGISTER DATA
+    private String pwd; //* REGISTER DATA
+    private String phone; //* REGISTER DATA
+    private String email; //* REGISTER DATA
+    private String bio; // MY PAGE DATA
+    private String country; //BILLING DATA
+    private String address; //BILLING DATA
 
     public String getId() {
         return id;

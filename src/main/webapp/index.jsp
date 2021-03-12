@@ -1,8 +1,3 @@
-<%@ page import="javax.naming.Context" %>
-<%@ page import="javax.naming.InitialContext" %>
-<%@ page import="javax.sql.DataSource" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.SQLException" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,27 +7,11 @@
     <title>Index</title>
 </head>
 <body>
-<%
-    boolean result = true;
+<header></header>
 
-    Connection conn = null;
-    Context initCtx = new InitialContext();
-    Context envCtx = (Context) initCtx.lookup("java:comp/env");
-    DataSource ds = (DataSource) envCtx.lookup("jdbc/oracle");
+<main></main>
 
-    try {
-        conn = ds.getConnection();
-    } catch (SQLException throwables) {
-        throwables.printStackTrace();
-    }
-
-
-    if (conn == null) {
-        result = false;
-    }
-%>
-
-<%=result%>
+<footer></footer>
 
 <script type="text/javascript" src="webjars/jquery/3.5.1/dist/jquery.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/4.6.0/js/bootstrap.js"></script>
