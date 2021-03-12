@@ -7,7 +7,6 @@ public class memberT {
     private String email; //* REGISTER DATA
     private String bio; // MY PAGE DATA
     private String country; //BILLING DATA
-    private String address; //BILLING DATA
 
     public String getId() {
         return id;
@@ -57,11 +56,4 @@ public class memberT {
         this.country = country;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
